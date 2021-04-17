@@ -1,0 +1,21 @@
+<video id="webcam" autoplay />
+<script>
+  const video = document.getElementById('webcam')
+
+  const onSuccess = (stream) => {
+    video.srcObject = stream
+  }
+
+  const onError = (error) => {
+    console.log({ error })
+  }
+
+  if (navigator.getUserMedia) {
+    navigator.getUserMedia({
+      video: true,
+      audio: true,
+    }, onSuccess, onError)
+  } else {
+    alert('getUserMedia is not supported')
+  }
+</script>
